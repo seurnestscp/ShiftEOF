@@ -10,7 +10,6 @@ class read_lawfile:
 
     def read_file(self, file_path):
         # 读取文件
-        self.law = {}
         f = open(file_path, encoding='utf-8')
         content = f.read()
         content = content.replace("\n\n", "\n")
@@ -21,7 +20,6 @@ class read_lawfile:
             c_start = chapter_p.start()
             c_end = chapter_p.end()
             key = content[c_start:c_end]
-            content = content[c_end:]
 
             chapter_p = re.search(self.chapter_mode, content)
             if chapter_p is not None:
@@ -61,7 +59,6 @@ class read_lawfile:
     #     chapter_p = re.search(chapter_mode, content)
 
     def show(self):
-        for key in self.law:
             print(key, '\n')
             for item in self.law[key]:
                 print(item, ' ', self.law[key][item])
